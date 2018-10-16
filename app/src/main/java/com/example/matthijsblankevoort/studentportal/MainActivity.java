@@ -5,6 +5,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -19,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<Portal> portals;
     public static ArrayAdapter<Portal> adapter;
+
+    private WebView webView;
 
 
     @Override
@@ -43,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 1);
             }
         });
+
     }
 
     @Override
@@ -52,8 +57,18 @@ public class MainActivity extends AppCompatActivity {
             if (data != null) {
                 String title = data.getStringExtra("title");
                 String url = data.getStringExtra("url");
-                Portal portal = new Portal(title, url);
+                final Portal portal = new Portal(title, url);
+
                 adapter.add(portal);
+
+                portalList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
+                        intent.putExtra("url", portal.getUrl());
+                        startActivity(intent);
+                    }
+                });
             }
         }
     }

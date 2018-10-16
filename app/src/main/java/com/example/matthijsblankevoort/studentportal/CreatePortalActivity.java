@@ -1,6 +1,7 @@
 package com.example.matthijsblankevoort.studentportal;
 
 import android.content.Intent;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,8 +14,8 @@ public class CreatePortalActivity extends AppCompatActivity {
     private ListView listView;
     private Button addButton;
 
-    private EditText titleInput;
-    private EditText urlInput;
+    private TextInputLayout titleInput;
+    private TextInputLayout urlInput;
 
 
     @Override
@@ -32,8 +33,8 @@ public class CreatePortalActivity extends AppCompatActivity {
             public void onClick(View view) {
             Intent intent = getIntent();
 
-            String url = urlInput.getText().toString();
-            String title = titleInput.getText().toString();
+            String url = urlInput.getEditText().getText().toString();
+            String title = titleInput.getEditText().getText().toString();
             intent.putExtra("title", title);
             intent.putExtra("url", url);
             setResult(RESULT_OK, intent);

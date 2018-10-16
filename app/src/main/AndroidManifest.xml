@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ViewPortalActivity" />
-        <activity android:name=".CreatePortalActivity"></activity>
+        <activity android:name=".CreatePortalActivity" />
+        <activity android:name=".WebViewActivity"></activity>
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
