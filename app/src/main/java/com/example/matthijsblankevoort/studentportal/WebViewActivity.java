@@ -16,6 +16,5 @@ public class WebViewActivity extends AppCompatActivity {
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(getIntent().getStringExtra("url"));
-        webView.;
     }
 }
